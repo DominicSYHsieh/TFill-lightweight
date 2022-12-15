@@ -1,0 +1,38 @@
+cd D:\Dominic\TFill-main
+
+python test.py --name celeba --img_file ./examples/celeba/img/ --mask_file ./examples/celeba/mask/ --results_dir ./result --model tc --coarse_or_refine refine --gpu_id 0 --no_shuffle --batch_size 1 --preprocess scale_shortside --mask_type 3 --load_size 512 --attn_G --add_noise
+
+
+python train.py --name celeba_style_Ori --img_file D:\Dominic\TFill-main\dataset\celeba_hq\train --mask_file D:\Dominic\TFill-main\dataset\disocclusion_img_mask --model tc --coarse_or_refine coarse --netT original --n_encoders 12 --n_decoders 0 --netD style --gpu_ids 0 --load_size 542 --fine_size 512 --batch_size 8 --display_port 8097 --attn_G --add_noise --display_ncols 0 
+
+
+
+
+python train.py --name celeba_styleD --img_file D:\Dominic\TFill-main\dataset\celeba_hq\train --mask_file D:\Dominic\TFill-main\dataset\disocclusion_img_mask --model tc --coarse_or_refine refine --netT original --n_encoders 12 --n_decoders 0 --netD style --gpu_ids 0 --load_size 542 --fine_size 512 --batch_size 2 --display_port 8097 --attn_G --add_noise --display_ncols 0 --continue_train
+
+python -m visdom.server
+http://localhost:8097
+
+基於Transformer對影像修復之效能與性能研究
+
+使用Transformer對缺失影像之修補與改善性能與效能
+
+Python，OpenCV，電腦視覺，深度學習，影像修復，嵌入式系統
+
+AlphaPose+LSTM動態肢體辨識之人員意外偵測系統，碩士實習:Defect異常檢測之演算法開發
+
+
+
+python train.py --name celeba_style_D --img_file D:\Dominic\TFill-main\dataset\celeba_hq\train --mask_file D:\Dominic\TFill-main\dataset\disocclusion_img_mask --model tc --coarse_or_refine coarse --netT original --n_encoders 12 --n_decoders 0 --netD style --gpu_ids 0 --load_size 542 --fine_size 512 --batch_size 8 --display_port 8097 --attn_G --add_noise --display_ncols 0 --continue_train
+
+
+
+
+python train.py --name celeba_style_SA --img_file D:\Dominic\TFill-main\dataset\celeba_hq\train --mask_file D:\Dominic\TFill-main\dataset\disocclusion_img_mask --model tc --coarse_or_refine coarse --netT original --n_encoders 12 --n_decoders 0 --netD style --gpu_ids 0 --load_size 542 --fine_size 512 --batch_size 8 --display_port 8097 --attn_G --add_noise --display_ncols 0 --continue_train
+
+
+
+
+python train.py --name celeba_style_SA_noProj --img_file D:\Dominic\TFill-main\dataset\celeba_hq\train --mask_file D:\Dominic\TFill-main\dataset\disocclusion_img_mask --model tc --coarse_or_refine coarse --netT original --n_encoders 12 --n_decoders 0 --netD style --gpu_ids 0 --load_size 542 --fine_size 512 --batch_size 8 --display_port 8097 --attn_G --add_noise --display_ncols 0 --continue_train
+
+python train.py --name celeba_style_SA_noProj --img_file D:\Dominic\TFill-main\dataset\celeba_hq\train --mask_file D:\Dominic\TFill-main\dataset\disocclusion_img_mask --model tc --coarse_or_refine refine --netT original --n_encoders 12 --n_decoders 0 --netD style --gpu_ids 0 --load_size 542 --fine_size 512 --batch_size 2 --display_port 8097 --attn_G --add_noise --display_ncols 0 --continue_train
